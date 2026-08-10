@@ -13,9 +13,11 @@ import java.util.PriorityQueue;
  */
 public class Control {
     private PriorityQueue<Paciente> cola;
+    private LinkedList<Medico> medicos;
     
     public Control(){
          this.cola=new PriorityQueue();
+         this.medicos=new LinkedList();
     }
     
     public boolean ingresarPaciente(String nombre, String edad, String id, String triaje,String hora){
@@ -29,6 +31,21 @@ public class Control {
             this.cola.add(p);
             return true;
             
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    public boolean registrarMedico(String name, String age, String identify, String special){
+        try{
+            byte edad=Byte.parseByte(age);
+            int id=Integer.parseInt(identify);
+            
+            Medico m= new Medico(name, edad, id, special);
+            
+            this.medicos.add(m);
+            return true;
         }catch(Exception e){
             System.out.println(e.getMessage());
             return false;
