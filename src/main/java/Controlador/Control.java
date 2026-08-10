@@ -35,6 +35,15 @@ public class Control {
         }
     }
     
+    public Paciente siguienteTurno(){
+        if(this.cola.isEmpty()){
+            return null;
+        }
+        
+        return this.cola.poll();
+        
+    }
+    
     
     
 }

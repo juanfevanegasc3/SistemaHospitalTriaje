@@ -4,6 +4,7 @@
  */
 package Vista;
 import Controlador.*;
+import Modelo.Paciente;
 /**
  *
  * @author juanf
@@ -45,6 +46,7 @@ public class JFIngreso extends javax.swing.JFrame {
         boxTriaje = new javax.swing.JComboBox<>();
         txtLlegada = new javax.swing.JTextField();
         btnIngreso = new javax.swing.JButton();
+        btnSig = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,10 +64,13 @@ public class JFIngreso extends javax.swing.JFrame {
 
         txtEdad.addActionListener(this::txtEdadActionPerformed);
 
-        boxTriaje.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RESUSCITACION", "EMERGENCIA", "URGENCIA", "PRIORIDAD MENOR", "NO URGENTE" }));
+        boxTriaje.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RESUSCITACION", "EMERGENCIA", "URGENCIA", "PRIORIDAD_MENOR", "NO_URGENTE" }));
 
         btnIngreso.setText("Ingresar");
         btnIngreso.addActionListener(this::btnIngresoActionPerformed);
+
+        btnSig.setText("Siguiente turno");
+        btnSig.addActionListener(this::btnSigActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,15 +85,19 @@ public class JFIngreso extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnIngreso)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtNombre)
-                        .addComponent(txtEdad)
-                        .addComponent(txtId)
-                        .addComponent(boxTriaje, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtLlegada, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtNombre)
+                    .addComponent(txtEdad)
+                    .addComponent(txtId)
+                    .addComponent(boxTriaje, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLlegada, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addComponent(btnIngreso)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
+                .addComponent(btnSig)
+                .addGap(141, 141, 141))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,9 +122,11 @@ public class JFIngreso extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLlegada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(63, 63, 63)
-                .addComponent(btnIngreso)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnIngreso)
+                    .addComponent(btnSig))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,6 +160,17 @@ public class JFIngreso extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnIngresoActionPerformed
 
+    private void btnSigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigActionPerformed
+        // TODO add your handling code here:
+        Paciente p=this.main.siguienteTurno();
+        if(p==null){
+            javax.swing.JOptionPane.showMessageDialog(this, "No hay pacientes en la cola");
+            return;
+        }
+        
+        javax.swing.JOptionPane.showMessageDialog(this, "Siguiente paciente:\n"+p.getNombre());
+    }//GEN-LAST:event_btnSigActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -177,6 +199,7 @@ public class JFIngreso extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<String> boxTriaje;
     public javax.swing.JButton btnIngreso;
+    private javax.swing.JButton btnSig;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
