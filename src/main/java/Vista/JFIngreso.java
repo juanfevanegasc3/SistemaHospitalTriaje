@@ -11,14 +11,15 @@ import Modelo.Paciente;
  */
 public class JFIngreso extends javax.swing.JFrame {
     Control main;
-    
+    JFInicio ini;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFIngreso.class.getName());
 
     /**
      * Creates new form JFIngreso
      */
-    public JFIngreso(Control main) {
+    public JFIngreso(Control main, JFInicio ini) {
         this.main=main;
+        this.ini=ini;
         initComponents();
     }
     
@@ -185,6 +186,7 @@ public class JFIngreso extends javax.swing.JFrame {
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
+        this.ini.setVisible(true);
     }//GEN-LAST:event_btnVolverActionPerformed
 
     /**

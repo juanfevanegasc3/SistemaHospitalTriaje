@@ -86,14 +86,23 @@ public class JFInicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.inicio.setVisible(true);
         this.medico.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_btnPacienteActionPerformed
 
     private void btnMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicoActionPerformed
         // TODO add your handling code here:
         this.medico.setVisible(true);
         this.inicio.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_btnMedicoActionPerformed
-
+    
+    public void setIngreso(JFIngreso i){
+        this.inicio=i;
+    }
+    
+    public void setMedico(JFMedico m){
+        this.medico=m;
+    }
     /**
      * @param args the command line arguments
      */

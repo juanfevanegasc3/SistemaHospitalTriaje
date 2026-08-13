@@ -12,9 +12,11 @@ import Vista.*;
 public class Main {
     public static void main(String[] args){
         Control inicio=new Control();
-        JFIngreso form=new JFIngreso(inicio);
-        JFMedico med=new JFMedico(inicio);
-        JFInicio inicial=new JFInicio(form,med);
+        JFInicio inicial=new JFInicio();
+        JFIngreso form=new JFIngreso(inicio, inicial);
+        JFMedico med=new JFMedico(inicio, inicial);
+        inicial.setIngreso(form);
+        inicial.setMedico(med);
         inicial.setVisible(true);
     }
 }

@@ -18,10 +18,13 @@ public class JFMedico extends javax.swing.JFrame {
      * Creates new form JFMedico
      */
     private Control main;
-    public JFMedico(Control c){
+    private JFInicio ini;
+    public JFMedico(Control c, JFInicio ini){
         initComponents();
         this.main=c;
+        this.ini=ini;
     }
+    
     public JFMedico() {
         initComponents();
     }
@@ -136,6 +139,7 @@ public class JFMedico extends javax.swing.JFrame {
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
+        this.ini.setVisible(true);
     }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
